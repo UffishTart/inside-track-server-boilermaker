@@ -1,44 +1,121 @@
-'use strict'
+const { User, Race, UserRace, UserFriend } = require("../server/db/models");
+const db = require("../server/db");
+const { green, red } = require("chalk");
 
-const db = require('../server/db')
-const {User} = require('../server/db/models')
-
-async function seed() {
-  await db.sync({force: true})
-  console.log('db synced!')
-
-  const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
-  ])
-
-  console.log(`seeded ${users.length} users`)
-  console.log(`seeded successfully`)
-}
-
-// We've separated the `seed` function from the `runSeed` function.
-// This way we can isolate the error handling and exit trapping.
-// The `seed` function is concerned only with modifying the database.
-async function runSeed() {
-  console.log('seeding...')
-  try {
-    await seed()
-  } catch (err) {
-    console.error(err)
-    process.exitCode = 1
-  } finally {
-    console.log('closing db connection')
-    await db.close()
-    console.log('db connection closed')
+const userFriendRelations = [
+  {
+    userId: 1,
+    friendId: 4
+  },
+  {
+    userId: 1,
+    friendId: 3
+  },
+  {
+    userId: 2,
+    friendId: 3
+  },
+  {
+    userId: 4,
+    friendId: 2
+  },
+  {
+    userId: 3,
+    friendId: 4
   }
-}
+];
 
-// Execute the `seed` function, IF we ran this module directly (`node seed`).
-// `Async` functions always return a promise, so we can use `catch` to handle
-// any errors that might occur inside of `seed`.
-if (module === require.main) {
-  runSeed()
-}
+const raceData = [
+  {
+    length: "day"
+  },
+  {
+    length: "day"
+  },
+  {
+    length: "day"
+  },
+  {
+    length: "day"
+  },
+  {
+    length: "day"
+  }
+];
+const userRaceRelations = [
+  {
+    userId: 1,
+    raceId: 1,
+    place: 2,
+    differenceFromAverage: 100,
+    percentage: 0.1,
+    completedStatus: true
+  },
+  {
+    userId: 2,
+    raceId: 1,
+    place: 1,
+    differenceFromAverage: 1000,
+    percentage: 0.2,
+    completedStatus: true
+  }
+];
 
-// we export the seed function for testing purposes (see `./seed.spec.js`)
-module.exports = seed
+const seed = async () => {
+  await db.sync({ force: true });
+  const users = await Promise.all([
+    User.create({
+      userName: "rui",
+      email: "rui@email.com",
+      password: "123",
+      isAdmin: true,
+      wins: 4,
+      loses: 3,
+      estimatedAverage: 2514
+    }),
+    User.create({
+      userName: "kwhicher1",
+      email: "bradke1@discovery.com",
+      password: "w5jOkrnlwo",
+      wins: 2,
+      loses: 2,
+      estimatedAverage: 42565
+    }),
+    User.create({
+      userName: "carthurs2",
+      email: "grobinett2@xing.com",
+      password: "SSIuIMXI",
+      wins: 1,
+      loses: 3,
+      estimatedAverage: 33900
+    }),
+    User.create({
+      userName: "bbroadnicke3",
+      email: "dboseley3@apple.com",
+      password: "CiE0CKUGxU",
+      wins: 9,
+      loses: 7,
+      estimatedAverage: 93332
+    }),
+    User.create({
+      userName: "nblincoe4",
+      email: "ehellwich4@bluehost.com",
+      password: "OlojN9868",
+      wins: 4,
+      loses: 3,
+      estimatedAverage: 93088
+    })
+  ]);
+  await UserFriend.bulkCreate(userFriendRelations);
+  await Race.bulkCreate(raceData);
+  await UserRace.bulkCreate(userRaceRelations);
+
+  console.log(green("Seeding success!"));
+  db.close();
+};
+
+seed().catch(err => {
+  console.error(red("Oh noes! Something went wrong!"));
+  console.error(err);
+  db.close();
+});

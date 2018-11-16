@@ -3,17 +3,28 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
+  userName: {
+    type: Sequelize.STRING,
+    unique: true
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    validate: {
+      isEmail: true
+    }
+    // allowNull: false
   },
   password: {
     type: Sequelize.STRING,
     // Making `.password` act like a func hides it when serializing to JSON.
     // This is a hack to get around Sequelize's lack of a "private" option.
     get() {
-      return () => this.getDataValue('password')
+      return () => this.getDataValue("password");
     }
   },
   salt: {
@@ -21,14 +32,24 @@ const User = db.define('user', {
     // Making `.salt` act like a function hides it when serializing to JSON.
     // This is a hack to get around Sequelize's lack of a "private" option.
     get() {
-      return () => this.getDataValue('salt')
+      return () => this.getDataValue("salt");
     }
   },
-  googleId: {
+  facebookId: {
     type: Sequelize.STRING
+  },
+  wins: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  loses: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  estimatedAverage: {
+    type: Sequelize.INTEGER
   }
-})
-
+});
 module.exports = User
 
 /**

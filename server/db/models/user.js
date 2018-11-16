@@ -3,10 +3,21 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
+  userName: {
+    type: Sequelize.STRING,
+    unique: true
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    validate: {
+      isEmail: true
+    }
+    // allowNull: false
   },
   password: {
     type: Sequelize.STRING,
@@ -24,11 +35,21 @@ const User = db.define('user', {
       return () => this.getDataValue('salt')
     }
   },
-  googleId: {
+  facebookId: {
     type: Sequelize.STRING
+  },
+  wins: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  loses: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  estimatedAverage: {
+    type: Sequelize.INTEGER
   }
 })
-
 module.exports = User
 
 /**

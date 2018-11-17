@@ -10,12 +10,8 @@ const UserRace = db.define('userRace', {
     type: Sequelize.INTEGER,
     allowNull: false
   },
-  percentage: {
+  percentImprovement: {
     type: Sequelize.DECIMAL(10, 2),
-    allowNull: false
-  },
-  completedStatus: {
-    type: Sequelize.BOOLEAN,
     allowNull: false
   }
 })

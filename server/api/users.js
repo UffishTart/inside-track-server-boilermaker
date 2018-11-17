@@ -15,7 +15,7 @@ router.get('/', isAdmin, async (req, res, next) => {
         'id',
         'email',
         'facebookId',
-        'loses',
+        'losses',
         'wins',
         'estimatedAverage'
       ]

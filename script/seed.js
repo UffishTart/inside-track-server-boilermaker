@@ -1,6 +1,7 @@
+'use strict'
+
 const {User, Race, UserRace, UserFriend} = require('../server/db/models')
 const db = require('../server/db')
-const {green, red} = require('chalk')
 
 const userFriendRelations = [
   {
@@ -27,19 +28,29 @@ const userFriendRelations = [
 
 const raceData = [
   {
-    length: 'day'
+    name: 'first race',
+    length: 'day',
+    completedStatus: true
   },
   {
-    length: 'day'
+    name: 'second race',
+    length: 'day',
+    completedStatus: true
   },
   {
-    length: 'day'
+    name: 'third race',
+    length: 'day',
+    completedStatus: true
   },
   {
-    length: 'day'
+    name: 'fourth race',
+    length: 'day',
+    completedStatus: true
   },
   {
-    length: 'day'
+    name: 'fifth race',
+    length: 'day',
+    completedStatus: true
   }
 ]
 const userRaceRelations = [
@@ -48,16 +59,14 @@ const userRaceRelations = [
     raceId: 1,
     place: 2,
     differenceFromAverage: 100,
-    percentage: 0.1,
-    completedStatus: true
+    percentImprovement: 0.1
   },
   {
     userId: 2,
     raceId: 1,
     place: 1,
     differenceFromAverage: 1000,
-    percentage: 0.2,
-    completedStatus: true
+    percentImprovement: 0.2
   }
 ]
 
@@ -110,7 +119,7 @@ const seed = async () => {
   await Race.bulkCreate(raceData)
   await UserRace.bulkCreate(userRaceRelations)
 
-  console.log(green('Seeding success!'))
+  console.log('Seeding success!')
   db.close()
 }
 

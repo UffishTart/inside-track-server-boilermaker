@@ -42,7 +42,7 @@ const User = db.define('user', {
     type: Sequelize.INTEGER,
     defaultValue: 0
   },
-  loses: {
+  losses: {
     type: Sequelize.INTEGER,
     defaultValue: 0
   },

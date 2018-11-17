@@ -57,6 +57,7 @@ router.get('/:raceId/:userId', isAuthenticated, async (req, res, next) => {
 router.post('/', isAuthenticated, async (req, res, next) => {
   try {
     const userRaceData = req.body
+    console.log('!!!!!!!!!!!!!!!!!!!! req body ', req.body)
     const newUserRaceEntry = await UserRace.create(userRaceData)
     res.status(201).json(newUserRaceEntry)
   } catch (err) {

@@ -24,7 +24,47 @@ router.get('/:raceId', isAuthenticated, async (req, res, next) => {
       res.status(404).send('Race is not found!')
     } else {
       const userRaceDataEntries = await UserRace.findAll({where: {raceId}})
-      res.json(userRaceDataEntries)
+      // GETS the entries where the users have accepted/not accepted the invite
+      if (req.query.acceptedInvitation) {
+        const filteredUserRaceDataEntries = userRaceDataEntries.filter(
+          entry => {
+            return (
+              req.query.acceptedInvitation === String(entry.acceptedInvitation)
+            )
+          }
+        )
+        res.json(filteredUserRaceDataEntries)
+      } else {
+        res.json(userRaceDataEntries)
+      }
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
+// GET data for all races for a single user
+router.get('/races/:userId', isAuthenticated, async (req, res, next) => {
+  try {
+    const {userId} = req.params
+    const user = await User.findById(userId)
+    if (!user) {
+      res.status(404).send('User is not found!')
+    } else {
+      const userRaceDataEntries = await UserRace.findAll({where: {userId}})
+      // GETS only the users who have/have not accepted the invite
+      if (req.query.acceptedInvitation) {
+        const filteredUserRaceDataEntries = userRaceDataEntries.filter(
+          entry => {
+            return (
+              req.query.acceptedInvitation === String(entry.acceptedInvitation)
+            )
+          }
+        )
+        res.json(filteredUserRaceDataEntries)
+      } else {
+        res.json(userRaceDataEntries)
+      }
     }
   } catch (err) {
     next(err)

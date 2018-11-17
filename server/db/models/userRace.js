@@ -2,6 +2,10 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const UserRace = db.define('userRace', {
+  isOwner: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
   acceptedInvitation: {
     type: Sequelize.BOOLEAN,
     defaultValue: false

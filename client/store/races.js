@@ -24,9 +24,9 @@ export const fetchRacesDataFromServer = () => async dispatch => {
   }
 }
 
-export const postANewRace = (race, users) => async dispatch => {
+export const postANewRace = race => async dispatch => {
   try {
-    const {data} = await axios.post(`/api/races`, race, users)
+    const {data} = await axios.post(`/api/races`, race)
     const newRace = data
     dispatch(startNewRace(newRace))
   } catch (err) {

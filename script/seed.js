@@ -1,6 +1,5 @@
 const {User, Race, UserRace, UserFriend} = require('../server/db/models')
 const db = require('../server/db')
-const {green, red} = require('chalk')
 
 const userFriendRelations = [
   {
@@ -110,7 +109,7 @@ const seed = async () => {
   await Race.bulkCreate(raceData)
   await UserRace.bulkCreate(userRaceRelations)
 
-  console.log(green('Seeding success!'))
+  console.log('Seeding success!')
   db.close()
 }
 

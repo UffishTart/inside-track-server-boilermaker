@@ -17,7 +17,8 @@ router.get('/', isAdmin, async (req, res, next) => {
         'facebookId',
         'losses',
         'wins',
-        'estimatedAverage'
+        'estimatedAverage',
+        'createdAt'
       ]
     })
     res.json(users)

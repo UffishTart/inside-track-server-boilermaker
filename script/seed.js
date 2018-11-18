@@ -3,26 +3,30 @@
 const {User, Race, UserRace, UserFriend} = require('../server/db/models')
 const db = require('../server/db')
 
-const userFriendRelations = [
-  {
-    userId: 1,
-    friendId: 4
-  },
+const userFriendData = [
   {
     userId: 1,
     friendId: 3
+  },
+  {
+    userId: 1,
+    friendId: 4
   },
   {
     userId: 2,
     friendId: 3
   },
   {
-    userId: 4,
-    friendId: 2
+    userId: 2,
+    friendId: 4
   },
   {
     userId: 3,
     friendId: 4
+  },
+  {
+    userId: 4,
+    friendId: 5
   }
 ]
 
@@ -40,39 +44,122 @@ const raceData = [
   {
     name: 'third race',
     length: 'day',
-    completedStatus: true
+    completedStatus: false
   },
   {
     name: 'fourth race',
     length: 'day',
-    completedStatus: true
-  },
-  {
-    name: 'fifth race',
-    length: 'day',
-    completedStatus: true
+    completedStatus: false
   }
 ]
-const userRaceRelations = [
+const userRaceData = [
   {
+    isOwner: true,
+    acceptedInvitation: true,
     userId: 1,
     raceId: 1,
-    place: 2,
+    dailyAverage: 8000,
+    place: 3,
     differenceFromAverage: 100,
+    percentImprovement: 0.0125
+  },
+  {
+    isOwner: false,
+    acceptedInvitation: true,
+    userId: 3,
+    raceId: 1,
+    dailyAverage: 10000,
+    place: 2,
+    differenceFromAverage: 1000,
     percentImprovement: 0.1
   },
   {
-    userId: 2,
+    isOwner: false,
+    acceptedInvitation: true,
+    userId: 4,
     raceId: 1,
+    dailyAverage: 6000,
     place: 1,
-    differenceFromAverage: 1000,
+    differenceFromAverage: 1200,
     percentImprovement: 0.2
+  },
+  {
+    isOwner: false,
+    acceptedInvitation: true,
+    userId: 2,
+    raceId: 2,
+    dailyAverage: 20000,
+    place: 3,
+    differenceFromAverage: -1000,
+    percentImprovement: -0.05
+  },
+  {
+    isOwner: false,
+    acceptedInvitation: true,
+    userId: 3,
+    raceId: 2,
+    dailyAverage: 10143,
+    place: 1,
+    differenceFromAverage: 1500,
+    percentImprovement: 0.148
+  },
+  {
+    isOwner: true,
+    acceptedInvitation: true,
+    userId: 4,
+    raceId: 2,
+    dailyAverage: 6171,
+    place: 2,
+    differenceFromAverage: 1000,
+    percentImprovement: 0.162
+  },
+  {
+    isOwner: false,
+    acceptedInvitation: false,
+    userId: 5,
+    raceId: 2
+  },
+  {
+    isOwner: true,
+    acceptedInvitation: true,
+    userId: 3,
+    raceId: 3
+  },
+  {
+    isOwner: false,
+    acceptedInvitation: false,
+    userId: 4,
+    raceId: 3
+  },
+  {
+    isOwner: false,
+    acceptedInvitation: false,
+    userId: 2,
+    raceId: 3
+  },
+  {
+    isOwner: false,
+    acceptedInvitation: false,
+    userId: 1,
+    raceId: 3
+  },
+  {
+    isOwner: true,
+    acceptedInvitation: true,
+    userId: 5,
+    raceId: 4
+  },
+  {
+    isOwner: false,
+    acceptedInvitation: true,
+    userId: 4,
+    raceId: 4
   }
 ]
 
 const seed = async () => {
   await db.sync({force: true})
-  const users = await Promise.all([
+  await Promise.all([
     User.create({
       userName: 'rui',
       email: 'rui@email.com',
@@ -115,9 +202,9 @@ const seed = async () => {
       estimatedAverage: 93088
     })
   ])
-  await UserFriend.bulkCreate(userFriendRelations)
+  await UserFriend.bulkCreate(userFriendData)
   await Race.bulkCreate(raceData)
-  await UserRace.bulkCreate(userRaceRelations)
+  await UserRace.bulkCreate(userRaceData)
 
   console.log('Seeding success!')
   db.close()

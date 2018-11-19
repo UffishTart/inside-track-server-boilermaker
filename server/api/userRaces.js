@@ -139,8 +139,8 @@ router.put('/:raceId/:userId', isAuthenticated, async (req, res, next) => {
         place: req.body.place || userRace.place,
         differenceFromAverage:
           req.body.differenceFromAverage || userRace.differenceFromAverage,
-        percentageImprovement:
-          req.body.percentageImprovement || userRace.percentageImprovement
+        percentImprovement:
+          req.body.percentImprovement || userRace.percentImprovement
       })
       res.send(userRace)
     } else {

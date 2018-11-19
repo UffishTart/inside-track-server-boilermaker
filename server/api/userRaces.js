@@ -24,18 +24,30 @@ router.get('/:raceId', isAuthenticated, async (req, res, next) => {
       res.status(404).send('Race is not found!')
     } else {
       const userRaceDataEntries = await UserRace.findAll({where: {raceId}})
+      const userIds = userRaceDataEntries.map(entry => entry.userId)
+      const users = await User.findAll({
+        where: {id: {[Op.in]: userIds}}
+      })
+      const userMap = {}
+      users.forEach(user => {
+        userMap[user.dataValues.id] = user.dataValues
+      })
+      const entriesWithData = userRaceDataEntries.map(entry => {
+        const userId = entry.dataValues.userId
+        entry.dataValues.userInfo = userMap[userId]
+        entry.dataValues.raceInfo = race
+        return entry
+      })
       // GETS the entries where the users have accepted/not accepted the invite
       if (req.query.acceptedInvitation) {
-        const filteredUserRaceDataEntries = userRaceDataEntries.filter(
-          entry => {
-            return (
-              req.query.acceptedInvitation === String(entry.acceptedInvitation)
-            )
-          }
-        )
-        res.json(filteredUserRaceDataEntries)
+        const filteredEntriesWithData = entriesWithData.filter(entry => {
+          return (
+            req.query.acceptedInvitation === String(entry.acceptedInvitation)
+          )
+        })
+        res.json(filteredEntriesWithData)
       } else {
-        res.json(userRaceDataEntries)
+        res.json(entriesWithData)
       }
     }
   } catch (err) {
@@ -52,18 +64,30 @@ router.get('/races/:userId', isAuthenticated, async (req, res, next) => {
       res.status(404).send('User is not found!')
     } else {
       const userRaceDataEntries = await UserRace.findAll({where: {userId}})
-      // GETS only the users who have/have not accepted the invite
+      const raceIds = userRaceDataEntries.map(entry => entry.raceId)
+      const races = await Race.findAll({
+        where: {id: {[Op.in]: raceIds}}
+      })
+      const raceMap = {}
+      races.forEach(race => {
+        raceMap[race.dataValues.id] = race.dataValues
+      })
+      const entriesWithData = userRaceDataEntries.map(entry => {
+        const raceId = entry.dataValues.raceId
+        entry.dataValues.raceInfo = raceMap[raceId]
+        entry.dataValues.userInfo = user
+        return entry
+      })
+      // GETS the entries where the users have accepted/not accepted the invite
       if (req.query.acceptedInvitation) {
-        const filteredUserRaceDataEntries = userRaceDataEntries.filter(
-          entry => {
-            return (
-              req.query.acceptedInvitation === String(entry.acceptedInvitation)
-            )
-          }
-        )
-        res.json(filteredUserRaceDataEntries)
+        const filteredEntriesWithData = entriesWithData.filter(entry => {
+          return (
+            req.query.acceptedInvitation === String(entry.acceptedInvitation)
+          )
+        })
+        res.json(filteredEntriesWithData)
       } else {
-        res.json(userRaceDataEntries)
+        res.json(entriesWithData)
       }
     }
   } catch (err) {
@@ -82,10 +106,17 @@ router.get('/:raceId/:userId', isAuthenticated, async (req, res, next) => {
     } else if (!user) {
       res.status(404).send('User is not found!')
     } else {
-      const userRaceEntry = await UserRace.findAll({
+      const userRaceDataEntry = await UserRace.findAll({
         where: {raceId, userId}
       })
-      res.json(userRaceEntry)
+
+      const entryWithData = userRaceDataEntry.map(entry => {
+        entry.dataValues.raceInfo = race
+        entry.dataValues.userInfo = user
+        return entry
+      })
+
+      res.json(entryWithData)
     }
   } catch (err) {
     next(err)
@@ -97,7 +128,6 @@ router.get('/:raceId/:userId', isAuthenticated, async (req, res, next) => {
 router.post('/', isAuthenticated, async (req, res, next) => {
   try {
     const userRaceData = req.body
-    console.log('!!!!!!!!!!!!!!!!!!!! req body ', req.body)
     const newUserRaceEntry = await UserRace.create(userRaceData)
     res.status(201).json(newUserRaceEntry)
   } catch (err) {

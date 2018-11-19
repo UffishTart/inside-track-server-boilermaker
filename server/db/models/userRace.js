@@ -10,6 +10,9 @@ const UserRace = db.define('userRace', {
     type: Sequelize.BOOLEAN,
     defaultValue: false
   },
+  dailyAverage: {
+    type: Sequelize.INTEGER
+  },
   place: {
     type: Sequelize.INTEGER
   },

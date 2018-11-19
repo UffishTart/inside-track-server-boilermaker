@@ -123,6 +123,34 @@ router.get('/:raceId/:userId', isAuthenticated, async (req, res, next) => {
   }
 })
 
+router.put('/:raceId/:userId', isAuthenticated, async (req, res, next) => {
+  try {
+    const userRace = await UserRace.findOne({
+      where: {
+        userId: req.params.userId,
+        raceId: req.params.raceId
+      }
+    })
+    if (userRace.userId) {
+      await userRace.update({
+        acceptedInvitation:
+          req.body.acceptedInvitation || userRace.acceptedInvitation,
+        dailyAverage: req.body.dailyAverage || userRace.dailyAverage,
+        place: req.body.place || userRace.place,
+        differenceFromAverage:
+          req.body.differenceFromAverage || userRace.differenceFromAverage,
+        percentageImprovement:
+          req.body.percentageImprovement || userRace.percentageImprovement
+      })
+      res.send(userRace)
+    } else {
+      res.status(404).send('Not Found')
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
 // POST a user's race data into UserRace model
 // takes in userId, raceId, place, differenceFromAverage, percentImprovement
 router.post('/', isAuthenticated, async (req, res, next) => {

@@ -59,9 +59,9 @@ const userRaceData = [
     userId: 1,
     raceId: 1,
     dailyAverage: 8000,
-    place: 3,
-    differenceFromAverage: 100,
-    percentImprovement: 0.0125
+    place: 1,
+    differenceFromAverage: 4000,
+    percentImprovement: 0.5
   },
   {
     isOwner: false,
@@ -69,7 +69,7 @@ const userRaceData = [
     userId: 3,
     raceId: 1,
     dailyAverage: 10000,
-    place: 2,
+    place: 3,
     differenceFromAverage: 1000,
     percentImprovement: 0.1
   },
@@ -79,7 +79,7 @@ const userRaceData = [
     userId: 4,
     raceId: 1,
     dailyAverage: 6000,
-    place: 1,
+    place: 2,
     differenceFromAverage: 1200,
     percentImprovement: 0.2
   },

@@ -1,11 +1,10 @@
 const router = require('express').Router()
 const {User} = require('../db/models')
-const {isAdmin} = require('./apiProtection/isAdmin')
 const {isAuthenticated} = require('./apiProtection/isAuthenticated')
 
 module.exports = router
 
-router.get('/', isAdmin, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the id and email fields - even though
@@ -13,6 +12,7 @@ router.get('/', isAdmin, async (req, res, next) => {
       // send everything to anyone who asks!
       attributes: [
         'id',
+        'userName',
         'email',
         'facebookId',
         'losses',

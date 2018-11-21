@@ -157,7 +157,17 @@ router.post('/', isAuthenticated, async (req, res, next) => {
   try {
     const userRaceData = req.body
     const newUserRaceEntry = await UserRace.create(userRaceData)
-    res.status(201).json(newUserRaceEntry)
+
+    console.log(newUserRaceEntry)
+    const race = await Race.findById(newUserRaceEntry.raceId)
+    const user = await User.findById(newUserRaceEntry.userId)
+
+    const entryWithData = [newUserRaceEntry].map(entry => {
+      entry.dataValues.raceInfo = race
+      entry.dataValues.userInfo = user
+      return entry
+    })
+    res.status(201).json(entryWithData)
   } catch (err) {
     next(err)
   }

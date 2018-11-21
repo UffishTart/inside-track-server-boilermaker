@@ -137,16 +137,7 @@ router.put('/:raceId/:userId', isAuthenticated, async (req, res, next) => {
       }
     })
     if (userRace.userId) {
-      await userRace.update({
-        acceptedInvitation:
-          req.body.acceptedInvitation || userRace.acceptedInvitation,
-        dailyAverage: req.body.dailyAverage || userRace.dailyAverage,
-        place: req.body.place || userRace.place,
-        differenceFromAverage:
-          req.body.differenceFromAverage || userRace.differenceFromAverage,
-        percentImprovement:
-          req.body.percentImprovement || userRace.percentImprovement
-      })
+      await userRace.update(req.body)
       res.send(userRace)
     } else {
       res.status(404).send('Not Found')

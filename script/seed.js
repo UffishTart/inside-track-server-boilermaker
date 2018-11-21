@@ -86,6 +86,58 @@ const raceData = [
     length: 'day',
     completedStatus: false,
     hasStarted: false
+  },
+  {
+    name: 'fifth race',
+    length: 'day',
+    completedStatus: true,
+    hasStarted: true,
+    startTime: fiveDaysAgo
+  },
+  {
+    name: 'sixth race',
+    length: 'day',
+    completedStatus: true,
+    hasStarted: true,
+    startTime: fiveDaysAgo
+  },
+  {
+    name: 'seventh race',
+    length: 'day',
+    completedStatus: false,
+    hasStarted: false
+  },
+  {
+    name: 'eighth race',
+    length: 'day',
+    completedStatus: false,
+    hasStarted: false
+  },
+  {
+    name: 'ninth race',
+    length: 'day',
+    completedStatus: true,
+    hasStarted: true,
+    startTime: fiveDaysAgo
+  },
+  {
+    name: 'tenth race',
+    length: 'day',
+    completedStatus: true,
+    hasStarted: true,
+    startTime: fiveDaysAgo
+  },
+  {
+    name: 'eleventh race',
+    length: 'day',
+    completedStatus: false,
+    hasStarted: false
+  },
+  {
+    name: 'twelfth race',
+    length: 'day',
+    completedStatus: false,
+    hasStarted: false
   }
 ]
 const userRaceData = [
@@ -190,6 +242,90 @@ const userRaceData = [
     acceptedInvitation: true,
     userId: 4,
     raceId: 4
+  },
+  {
+    isOwner: true,
+    acceptedInvitation: true,
+    userId: 1,
+    raceId: 5
+  },
+  {
+    isOwner: true,
+    acceptedInvitation: true,
+    userId: 1,
+    raceId: 6
+  },
+  {
+    isOwner: false,
+    acceptedInvitation: true,
+    userId: 2,
+    raceId: 6
+  },
+  {
+    isOwner: true,
+    acceptedInvitation: true,
+    userId: 1,
+    raceId: 7
+  },
+  {
+    isOwner: true,
+    acceptedInvitation: true,
+    userId: 1,
+    raceId: 8
+  },
+  {
+    isOwner: true,
+    acceptedInvitation: true,
+    userId: 1,
+    raceId: 9
+  },
+  {
+    isOwner: true,
+    acceptedInvitation: true,
+    userId: 1,
+    raceId: 9
+  },
+  {
+    isOwner: true,
+    acceptedInvitation: true,
+    userId: 1,
+    raceId: 10
+  },
+  {
+    isOwner: true,
+    acceptedInvitation: true,
+    userId: 1,
+    raceId: 11
+  },
+  {
+    isOwner: true,
+    acceptedInvitation: true,
+    userId: 1,
+    raceId: 12
+  },
+  {
+    isOwner: false,
+    acceptedInvitation: true,
+    userId: 3,
+    raceId: 12
+  },
+  {
+    isOwner: false,
+    acceptedInvitation: true,
+    userId: 4,
+    raceId: 12
+  },
+  {
+    isOwner: false,
+    acceptedInvitation: true,
+    userId: 2,
+    raceId: 8
+  },
+  {
+    isOwner: false,
+    acceptedInvitation: true,
+    userId: 5,
+    raceId: 8
   }
 ]
 
@@ -232,6 +368,88 @@ const seed = async () => {
     User.create({
       userName: 'nblincoe4',
       email: 'ehellwich4@bluehost.com',
+      password: 'OlojN9868',
+      wins: 4,
+      losses: 3,
+      estimatedAverage: 93088
+    }),
+    User.create({
+      userName: 'person1',
+      email: 'person1@email.com',
+      password: '123',
+      isAdmin: true,
+      wins: 4,
+      losses: 3,
+      estimatedAverage: 2514
+    }),
+    User.create({
+      userName: 'person2',
+      email: 'person2@discovery.com',
+      password: 'w5jOkrnlwo',
+      wins: 2,
+      losses: 2,
+      estimatedAverage: 42565
+    }),
+    User.create({
+      userName: 'person3',
+      email: 'person3@xing.com',
+      password: 'SSIuIMXI',
+      wins: 1,
+      losses: 3,
+      estimatedAverage: 33900
+    }),
+    User.create({
+      userName: 'person4',
+      email: 'person4@apple.com',
+      password: 'CiE0CKUGxU',
+      wins: 9,
+      losses: 7,
+      estimatedAverage: 93332
+    }),
+    User.create({
+      userName: 'person5',
+      email: 'person5@bluehost.com',
+      password: 'OlojN9868',
+      wins: 4,
+      losses: 3,
+      estimatedAverage: 93088
+    }),
+    User.create({
+      userName: 'person6',
+      email: 'person1@email.com',
+      password: '123',
+      isAdmin: true,
+      wins: 4,
+      losses: 3,
+      estimatedAverage: 2514
+    }),
+    User.create({
+      userName: 'person7',
+      email: 'person2@discovery.com',
+      password: 'w5jOkrnlwo',
+      wins: 2,
+      losses: 2,
+      estimatedAverage: 42565
+    }),
+    User.create({
+      userName: 'person8',
+      email: 'person3@xing.com',
+      password: 'SSIuIMXI',
+      wins: 1,
+      losses: 3,
+      estimatedAverage: 33900
+    }),
+    User.create({
+      userName: 'person9',
+      email: 'person4@apple.com',
+      password: 'CiE0CKUGxU',
+      wins: 9,
+      losses: 7,
+      estimatedAverage: 93332
+    }),
+    User.create({
+      userName: 'person10',
+      email: 'person5@bluehost.com',
       password: 'OlojN9868',
       wins: 4,
       losses: 3,

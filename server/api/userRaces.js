@@ -88,7 +88,7 @@ router.get('/races/:userId', isAuthenticated, async (req, res, next) => {
         res.json(filteredEntriesWithData)
       } else if (req.query.hasStarted) {
         const filteredEntriesWithData = entriesWithData.filter(entry => {
-          return req.query.hastStarted === String(entry.raceInfo.hasStarted)
+          return req.query.hasStarted === String(entry.raceInfo.hasStarted)
         })
         res.json(filteredEntriesWithData)
       } else {

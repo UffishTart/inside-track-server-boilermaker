@@ -276,12 +276,12 @@ const userRaceData = [
   {
     isOwner: true,
     acceptedInvitation: true,
-    userId: 1,
+    userId: 2,
     raceId: 9
   },
   {
-    isOwner: true,
-    acceptedInvitation: true,
+    isOwner: false,
+    acceptedInvitation: false,
     userId: 1,
     raceId: 9
   },
@@ -416,7 +416,7 @@ const seed = async () => {
     }),
     User.create({
       userName: 'person6',
-      email: 'person1@email.com',
+      email: 'person6@email.com',
       password: '123',
       isAdmin: true,
       wins: 4,
@@ -425,7 +425,7 @@ const seed = async () => {
     }),
     User.create({
       userName: 'person7',
-      email: 'person2@discovery.com',
+      email: 'person7@discovery.com',
       password: 'w5jOkrnlwo',
       wins: 2,
       losses: 2,
@@ -433,7 +433,7 @@ const seed = async () => {
     }),
     User.create({
       userName: 'person8',
-      email: 'person3@xing.com',
+      email: 'person8@xing.com',
       password: 'SSIuIMXI',
       wins: 1,
       losses: 3,
@@ -441,7 +441,7 @@ const seed = async () => {
     }),
     User.create({
       userName: 'person9',
-      email: 'person4@apple.com',
+      email: 'person9@apple.com',
       password: 'CiE0CKUGxU',
       wins: 9,
       losses: 7,
@@ -449,7 +449,7 @@ const seed = async () => {
     }),
     User.create({
       userName: 'person10',
-      email: 'person5@bluehost.com',
+      email: 'person10@bluehost.com',
       password: 'OlojN9868',
       wins: 4,
       losses: 3,

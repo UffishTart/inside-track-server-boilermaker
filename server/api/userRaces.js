@@ -163,7 +163,7 @@ router.post('/', isAuthenticated, async (req, res, next) => {
       entry.dataValues.userInfo = user
       return entry
     })
-    res.status(201).json(entryWithData)
+    res.status(201).json(entryWithData[0])
   } catch (err) {
     next(err)
   }

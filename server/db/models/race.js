@@ -13,6 +13,13 @@ const Race = db.define('race', {
   completedStatus: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
+  },
+  hasStarted: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
+  startTime: {
+    type: Sequelize.DATE
   }
 })
 

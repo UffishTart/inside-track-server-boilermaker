@@ -3,6 +3,12 @@
 const {User, Race, UserRace, UserFriend} = require('../server/db/models')
 const db = require('../server/db')
 
+const fiveDaysAgo = new Date()
+const tenDaysAgo = new Date()
+const end = new Date()
+fiveDaysAgo.setDate(end.getDate() - 5)
+tenDaysAgo.setDate(end.getDate() - 10)
+
 const userFriendData = [
   {
     userId: 1,
@@ -27,6 +33,30 @@ const userFriendData = [
   {
     userId: 4,
     friendId: 5
+  },
+  {
+    userId: 3,
+    friendId: 1
+  },
+  {
+    userId: 4,
+    friendId: 1
+  },
+  {
+    userId: 3,
+    friendId: 2
+  },
+  {
+    userId: 4,
+    friendId: 2
+  },
+  {
+    userId: 4,
+    friendId: 3
+  },
+  {
+    userId: 5,
+    friendId: 4
   }
 ]
 
@@ -34,22 +64,28 @@ const raceData = [
   {
     name: 'first race',
     length: 'day',
-    completedStatus: true
+    completedStatus: true,
+    hasStarted: true,
+    startTime: fiveDaysAgo
   },
   {
     name: 'second race',
     length: 'day',
-    completedStatus: true
+    completedStatus: true,
+    hasStarted: true,
+    startTime: fiveDaysAgo
   },
   {
     name: 'third race',
     length: 'day',
-    completedStatus: false
+    completedStatus: false,
+    hasStarted: false
   },
   {
     name: 'fourth race',
     length: 'day',
-    completedStatus: false
+    completedStatus: false,
+    hasStarted: false
   }
 ]
 const userRaceData = [

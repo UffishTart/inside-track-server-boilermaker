@@ -46,11 +46,6 @@ router.get('/:raceId', isAuthenticated, async (req, res, next) => {
           )
         })
         res.json(filteredEntriesWithData)
-      } else if (req.query.hasStarted) {
-        const filteredEntriesWithData = entriesWithData.filter(entry => {
-          return req.query.hastStarted === String(entry.raceInfo.hasStarted)
-        })
-        res.json(filteredEntriesWithData)
       } else {
         res.json(entriesWithData)
       }
@@ -89,6 +84,11 @@ router.get('/races/:userId', isAuthenticated, async (req, res, next) => {
           return (
             req.query.acceptedInvitation === String(entry.acceptedInvitation)
           )
+        })
+        res.json(filteredEntriesWithData)
+      } else if (req.query.hasStarted) {
+        const filteredEntriesWithData = entriesWithData.filter(entry => {
+          return req.query.hastStarted === String(entry.raceInfo.hasStarted)
         })
         res.json(filteredEntriesWithData)
       } else {

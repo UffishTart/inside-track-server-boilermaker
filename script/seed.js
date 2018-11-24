@@ -63,79 +63,79 @@ const userFriendData = [
 const raceData = [
   {
     name: 'first race',
-    length: 'day',
+    length: 1,
     completedStatus: true,
     hasStarted: true,
     startTime: fiveDaysAgo
   },
   {
     name: 'second race',
-    length: 'day',
+    length: 1,
     completedStatus: true,
     hasStarted: true,
     startTime: fiveDaysAgo
   },
   {
     name: 'third race',
-    length: 'day',
+    length: 1,
     completedStatus: false,
     hasStarted: false
   },
   {
     name: 'fourth race',
-    length: 'day',
+    length: 1,
     completedStatus: false,
     hasStarted: false
   },
   {
     name: 'fifth race',
-    length: 'day',
+    length: 1,
     completedStatus: true,
     hasStarted: true,
     startTime: fiveDaysAgo
   },
   {
     name: 'sixth race',
-    length: 'day',
+    length: 1,
     completedStatus: true,
     hasStarted: true,
     startTime: fiveDaysAgo
   },
   {
     name: 'seventh race',
-    length: 'day',
+    length: 1,
     completedStatus: false,
     hasStarted: false
   },
   {
     name: 'eighth race',
-    length: 'day',
+    length: 1,
     completedStatus: false,
     hasStarted: false
   },
   {
     name: 'ninth race',
-    length: 'day',
+    length: 1,
     completedStatus: true,
     hasStarted: true,
     startTime: fiveDaysAgo
   },
   {
     name: 'tenth race',
-    length: 'day',
+    length: 1,
     completedStatus: true,
     hasStarted: true,
     startTime: fiveDaysAgo
   },
   {
     name: 'eleventh race',
-    length: 'day',
+    length: 1,
     completedStatus: false,
     hasStarted: false
   },
   {
     name: 'twelfth race',
-    length: 'day',
+    length: 1,
     completedStatus: false,
     hasStarted: false
   }

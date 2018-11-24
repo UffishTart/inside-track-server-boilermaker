@@ -7,8 +7,8 @@ const Race = db.define('race', {
     defaultValue: 'Race'
   },
   length: {
-    type: Sequelize.ENUM('day', 'week'),
-    defaultValue: 'day'
+    type: Sequelize.INTEGER,
+    defaultValue: 1
   },
   completedStatus: {
     type: Sequelize.BOOLEAN,

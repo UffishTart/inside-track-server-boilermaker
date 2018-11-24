@@ -1,8 +1,8 @@
 const router = require('express').Router()
 const Op = require('sequelize').Op
-const {User, Race, UserRace} = require('../db/models')
+const { User, Race, UserRace } = require('../db/models')
 // const {isAdmin} = require('./apiProtection/isAdmin')
-const {isAuthenticated} = require('./apiProtection/isAuthenticated')
+const { isAuthenticated } = require('./apiProtection/isAuthenticated')
 module.exports = router
 
 // GET data for all users in all races
@@ -18,15 +18,15 @@ router.get('/', isAuthenticated, async (req, res, next) => {
 // GET data for all users in a single race
 router.get('/:raceId', isAuthenticated, async (req, res, next) => {
   try {
-    const {raceId} = req.params
+    const { raceId } = req.params
     const race = await Race.findById(raceId)
     if (!race) {
       res.status(404).send('Race is not found!')
     } else {
-      const userRaceDataEntries = await UserRace.findAll({where: {raceId}})
+      const userRaceDataEntries = await UserRace.findAll({ where: { raceId } })
       const userIds = userRaceDataEntries.map(entry => entry.userId)
       const users = await User.findAll({
-        where: {id: {[Op.in]: userIds}}
+        where: { id: { [Op.in]: userIds } }
       })
       const userMap = {}
       users.forEach(user => {
@@ -58,15 +58,15 @@ router.get('/:raceId', isAuthenticated, async (req, res, next) => {
 // GET data for all races for a single user
 router.get('/races/:userId', isAuthenticated, async (req, res, next) => {
   try {
-    const {userId} = req.params
+    const { userId } = req.params
     const user = await User.findById(userId)
     if (!user) {
       res.status(404).send('User is not found!')
     } else {
-      const userRaceDataEntries = await UserRace.findAll({where: {userId}})
+      const userRaceDataEntries = await UserRace.findAll({ where: { userId } })
       const raceIds = userRaceDataEntries.map(entry => entry.raceId)
       const races = await Race.findAll({
-        where: {id: {[Op.in]: raceIds}}
+        where: { id: { [Op.in]: raceIds } }
       })
       const raceMap = {}
       races.forEach(race => {
@@ -78,6 +78,7 @@ router.get('/races/:userId', isAuthenticated, async (req, res, next) => {
         entry.dataValues.userInfo = user
         return entry
       })
+      console.log(req.query)
       // GETS the entries where the users have accepted/not accepted the invite
       if (req.query.acceptedInvitation) {
         const filteredEntriesWithData = entriesWithData.filter(entry => {
@@ -88,7 +89,10 @@ router.get('/races/:userId', isAuthenticated, async (req, res, next) => {
         res.json(filteredEntriesWithData)
       } else if (req.query.hasStarted) {
         const filteredEntriesWithData = entriesWithData.filter(entry => {
-          return req.query.hastStarted === String(entry.raceInfo.hasStarted)
+          return (
+            req.query.hasStarted ===
+            String(entry.dataValues.raceInfo.hasStarted)
+          )
         })
         res.json(filteredEntriesWithData)
       } else {
@@ -103,7 +107,7 @@ router.get('/races/:userId', isAuthenticated, async (req, res, next) => {
 // GET data for a single user in a single race
 router.get('/:raceId/:userId', isAuthenticated, async (req, res, next) => {
   try {
-    const {raceId, userId} = req.params
+    const { raceId, userId } = req.params
     const race = await Race.findById(raceId)
     const user = await User.findById(userId)
     if (!race) {
@@ -112,7 +116,7 @@ router.get('/:raceId/:userId', isAuthenticated, async (req, res, next) => {
       res.status(404).send('User is not found!')
     } else {
       const userRaceDataEntry = await UserRace.findAll({
-        where: {raceId, userId}
+        where: { raceId, userId }
       })
 
       const entryWithData = userRaceDataEntry.map(entry => {
@@ -163,7 +167,7 @@ router.post('/', isAuthenticated, async (req, res, next) => {
       entry.dataValues.userInfo = user
       return entry
     })
-    res.status(201).json(entryWithData)
+    res.status(201).json(entryWithData[0])
   } catch (err) {
     next(err)
   }

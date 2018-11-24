@@ -142,7 +142,7 @@ const raceData = [
 ]
 const userRaceData = [
   {
-    isOwner: true,
+    isOwner: false,
     acceptedInvitation: true,
     userId: 1,
     raceId: 1,
@@ -152,7 +152,7 @@ const userRaceData = [
     percentImprovement: 0.5
   },
   {
-    isOwner: false,
+    isOwner: true,
     acceptedInvitation: true,
     userId: 3,
     raceId: 1,
@@ -250,13 +250,13 @@ const userRaceData = [
     raceId: 5
   },
   {
-    isOwner: true,
+    isOwner: false,
     acceptedInvitation: true,
     userId: 1,
     raceId: 6
   },
   {
-    isOwner: false,
+    isOwner: true,
     acceptedInvitation: true,
     userId: 2,
     raceId: 6

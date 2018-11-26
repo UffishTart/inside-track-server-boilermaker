@@ -1,6 +1,6 @@
 'use strict'
 
-const {User, Race, UserRace, UserFriend} = require('../server/db/models')
+const {User, Race, UserRace, UserFriend, Horse} = require('../server/db/models')
 const db = require('../server/db')
 
 const fiveDaysAgo = new Date()
@@ -158,6 +158,7 @@ const horseData = [
     imgUrl: 'CoolClips_peop1281.png'
   }
 ]
+
 const userRaceData = [
   {
     isOwner: false,
@@ -349,6 +350,7 @@ const userRaceData = [
 
 const seed = async () => {
   await db.sync({force: true})
+  await Horse.bulkCreate(horseData)
   await Promise.all([
     User.create({
       userName: 'rui',

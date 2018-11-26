@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const Op = require('sequelize').Op
-const {User, Race, UserRace} = require('../db/models')
+const {User, Race, UserRace, Horse} = require('../db/models')
 // const {isAdmin} = require('./apiProtection/isAdmin')
 const {isAuthenticated} = require('./apiProtection/isAuthenticated')
 module.exports = router

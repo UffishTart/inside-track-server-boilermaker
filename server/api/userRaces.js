@@ -26,7 +26,7 @@ router.get('/:raceId', isAuthenticated, async (req, res, next) => {
       const userRaceDataEntries = await UserRace.findAll({where: {raceId}})
       const userIds = userRaceDataEntries.map(entry => entry.userId)
       const users = await User.findAll({
-        include: {model: Horse},
+        include: [{model: Horse}],
         where: {id: {[Op.in]: userIds}}
       })
       const userMap = {}

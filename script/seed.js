@@ -1,6 +1,6 @@
 'use strict'
 
-const {User, Race, UserRace, UserFriend} = require('../server/db/models')
+const {User, Race, UserRace, UserFriend, Horse} = require('../server/db/models')
 const db = require('../server/db')
 
 const fiveDaysAgo = new Date()
@@ -140,6 +140,25 @@ const raceData = [
     hasStarted: false
   }
 ]
+const horseData = [
+  {
+    name: 'Horse 1',
+    imgUrl: 'horse1.png'
+  },
+  {
+    name: 'Horse 2',
+    imgUrl: 'rcLnXB56i.png'
+  },
+  {
+    name: 'Horse 3',
+    imgUrl: 'horse3.png'
+  },
+  {
+    name: 'Horse 4',
+    imgUrl: 'CoolClips_peop1281.png'
+  }
+]
+
 const userRaceData = [
   {
     isOwner: false,
@@ -331,6 +350,7 @@ const userRaceData = [
 
 const seed = async () => {
   await db.sync({force: true})
+  await Horse.bulkCreate(horseData)
   await Promise.all([
     User.create({
       userName: 'rui',
@@ -339,7 +359,8 @@ const seed = async () => {
       isAdmin: true,
       wins: 4,
       losses: 3,
-      estimatedAverage: 2514
+      estimatedAverage: 2514,
+      horseId: 1
     }),
     User.create({
       userName: 'kwhicher1',
@@ -347,7 +368,8 @@ const seed = async () => {
       password: 'w5jOkrnlwo',
       wins: 2,
       losses: 2,
-      estimatedAverage: 42565
+      estimatedAverage: 42565,
+      horseId: 2
     }),
     User.create({
       userName: 'carthurs2',
@@ -355,7 +377,8 @@ const seed = async () => {
       password: 'SSIuIMXI',
       wins: 1,
       losses: 3,
-      estimatedAverage: 33900
+      estimatedAverage: 33900,
+      horseId: 3
     }),
     User.create({
       userName: 'bbroadnicke3',
@@ -363,7 +386,8 @@ const seed = async () => {
       password: 'CiE0CKUGxU',
       wins: 9,
       losses: 7,
-      estimatedAverage: 93332
+      estimatedAverage: 93332,
+      horseId: 4
     }),
     User.create({
       userName: 'nblincoe4',
@@ -371,7 +395,8 @@ const seed = async () => {
       password: 'OlojN9868',
       wins: 4,
       losses: 3,
-      estimatedAverage: 93088
+      estimatedAverage: 93088,
+      horseId: 1
     }),
     User.create({
       userName: 'person1',
@@ -380,7 +405,8 @@ const seed = async () => {
       isAdmin: true,
       wins: 4,
       losses: 3,
-      estimatedAverage: 2514
+      estimatedAverage: 2514,
+      horseId: 1
     }),
     User.create({
       userName: 'person2',
@@ -388,7 +414,8 @@ const seed = async () => {
       password: 'w5jOkrnlwo',
       wins: 2,
       losses: 2,
-      estimatedAverage: 42565
+      estimatedAverage: 42565,
+      horseId: 1
     }),
     User.create({
       userName: 'person3',
@@ -396,7 +423,8 @@ const seed = async () => {
       password: 'SSIuIMXI',
       wins: 1,
       losses: 3,
-      estimatedAverage: 33900
+      estimatedAverage: 33900,
+      horseId: 1
     }),
     User.create({
       userName: 'person4',
@@ -404,7 +432,8 @@ const seed = async () => {
       password: 'CiE0CKUGxU',
       wins: 9,
       losses: 7,
-      estimatedAverage: 93332
+      estimatedAverage: 93332,
+      horseId: 1
     }),
     User.create({
       userName: 'person5',
@@ -412,7 +441,8 @@ const seed = async () => {
       password: 'OlojN9868',
       wins: 4,
       losses: 3,
-      estimatedAverage: 93088
+      estimatedAverage: 93088,
+      horseId: 1
     }),
     User.create({
       userName: 'person6',
@@ -421,7 +451,8 @@ const seed = async () => {
       isAdmin: true,
       wins: 4,
       losses: 3,
-      estimatedAverage: 2514
+      estimatedAverage: 2514,
+      horseId: 1
     }),
     User.create({
       userName: 'person7',
@@ -429,7 +460,8 @@ const seed = async () => {
       password: 'w5jOkrnlwo',
       wins: 2,
       losses: 2,
-      estimatedAverage: 42565
+      estimatedAverage: 42565,
+      horseId: 1
     }),
     User.create({
       userName: 'person8',
@@ -437,7 +469,8 @@ const seed = async () => {
       password: 'SSIuIMXI',
       wins: 1,
       losses: 3,
-      estimatedAverage: 33900
+      estimatedAverage: 33900,
+      horseId: 1
     }),
     User.create({
       userName: 'person9',
@@ -445,7 +478,8 @@ const seed = async () => {
       password: 'CiE0CKUGxU',
       wins: 9,
       losses: 7,
-      estimatedAverage: 93332
+      estimatedAverage: 93332,
+      horseId: 1
     }),
     User.create({
       userName: 'person10',
@@ -453,7 +487,8 @@ const seed = async () => {
       password: 'OlojN9868',
       wins: 4,
       losses: 3,
-      estimatedAverage: 93088
+      estimatedAverage: 93088,
+      horseId: 1
     })
   ])
   await UserFriend.bulkCreate(userFriendData)

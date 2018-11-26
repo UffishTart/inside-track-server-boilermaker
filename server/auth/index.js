@@ -20,6 +20,7 @@ router.post('/login', async (req, res, next) => {
 })
 
 router.post('/loginWithToken', async (req, res, next) => {
+  console.log('are we getting to this route?')
   try {
     const user = await User.findById(req.body.token)
     req.login(user, err => (err ? next(err) : res.json(user)))

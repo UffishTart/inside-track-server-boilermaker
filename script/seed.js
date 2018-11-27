@@ -143,19 +143,15 @@ const raceData = [
 const horseData = [
   {
     name: 'Horse 1',
-    imgUrl: 'horse1.png'
+    imgUrl: 'https://i.imgur.com/0z44ccU.png'
   },
   {
     name: 'Horse 2',
-    imgUrl: 'rcLnXB56i.png'
+    imgUrl: 'https://i.imgur.com/hytuLWh.png'
   },
   {
     name: 'Horse 3',
-    imgUrl: 'horse3.png'
-  },
-  {
-    name: 'Horse 4',
-    imgUrl: 'CoolClips_peop1281.png'
+    imgUrl: 'https://i.imgur.com/GBuY773.png'
   }
 ]
 

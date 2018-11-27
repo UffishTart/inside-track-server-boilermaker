@@ -147,11 +147,11 @@ const horseData = [
   },
   {
     name: 'Horse 2',
-    imgUrl: 'https://i.imgur.com/hytuLWh.png'
+    imgUrl: 'https://i.imgur.com/GBuY773.png'
   },
   {
     name: 'Horse 3',
-    imgUrl: 'https://i.imgur.com/GBuY773.png'
+    imgUrl: 'https://i.imgur.com/hytuLWh.png'
   }
 ]
 
@@ -383,7 +383,7 @@ const seed = async () => {
       wins: 9,
       losses: 7,
       estimatedAverage: 93332,
-      horseId: 4
+      horseId: 3
     }),
     User.create({
       userName: 'nblincoe4',

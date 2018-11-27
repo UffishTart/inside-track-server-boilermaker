@@ -383,7 +383,7 @@ const seed = async () => {
       wins: 9,
       losses: 7,
       estimatedAverage: 93332,
-      horseId: 4
+      horseId: 3
     }),
     User.create({
       userName: 'nblincoe4',

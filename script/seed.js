@@ -147,11 +147,11 @@ const horseData = [
   },
   {
     name: 'Horse 2',
-    imgUrl: 'https://i.imgur.com/hytuLWh.png'
+    imgUrl: 'https://i.imgur.com/GBuY773.png'
   },
   {
     name: 'Horse 3',
-    imgUrl: 'https://i.imgur.com/GBuY773.png'
+    imgUrl: 'https://i.imgur.com/hytuLWh.png'
   }
 ]
 

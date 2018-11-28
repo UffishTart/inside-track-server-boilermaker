@@ -355,7 +355,6 @@ const seed = async () => {
       isAdmin: true,
       wins: 4,
       losses: 3,
-      estimatedAverage: 2514,
       horseId: 1
     }),
     User.create({
@@ -364,7 +363,6 @@ const seed = async () => {
       password: 'w5jOkrnlwo',
       wins: 2,
       losses: 2,
-      estimatedAverage: 42565,
       horseId: 2
     }),
     User.create({
@@ -373,7 +371,6 @@ const seed = async () => {
       password: 'SSIuIMXI',
       wins: 1,
       losses: 3,
-      estimatedAverage: 33900,
       horseId: 3
     }),
     User.create({
@@ -382,7 +379,6 @@ const seed = async () => {
       password: 'CiE0CKUGxU',
       wins: 9,
       losses: 7,
-      estimatedAverage: 93332,
       horseId: 3
     }),
     User.create({
@@ -391,7 +387,6 @@ const seed = async () => {
       password: 'OlojN9868',
       wins: 4,
       losses: 3,
-      estimatedAverage: 93088,
       horseId: 1
     }),
     User.create({
@@ -401,7 +396,6 @@ const seed = async () => {
       isAdmin: true,
       wins: 4,
       losses: 3,
-      estimatedAverage: 2514,
       horseId: 1
     }),
     User.create({
@@ -410,7 +404,6 @@ const seed = async () => {
       password: 'w5jOkrnlwo',
       wins: 2,
       losses: 2,
-      estimatedAverage: 42565,
       horseId: 1
     }),
     User.create({
@@ -419,7 +412,6 @@ const seed = async () => {
       password: 'SSIuIMXI',
       wins: 1,
       losses: 3,
-      estimatedAverage: 33900,
       horseId: 1
     }),
     User.create({
@@ -428,7 +420,6 @@ const seed = async () => {
       password: 'CiE0CKUGxU',
       wins: 9,
       losses: 7,
-      estimatedAverage: 93332,
       horseId: 1
     }),
     User.create({
@@ -437,7 +428,6 @@ const seed = async () => {
       password: 'OlojN9868',
       wins: 4,
       losses: 3,
-      estimatedAverage: 93088,
       horseId: 1
     }),
     User.create({
@@ -447,7 +437,6 @@ const seed = async () => {
       isAdmin: true,
       wins: 4,
       losses: 3,
-      estimatedAverage: 2514,
       horseId: 1
     }),
     User.create({
@@ -456,7 +445,6 @@ const seed = async () => {
       password: 'w5jOkrnlwo',
       wins: 2,
       losses: 2,
-      estimatedAverage: 42565,
       horseId: 1
     }),
     User.create({
@@ -465,7 +453,6 @@ const seed = async () => {
       password: 'SSIuIMXI',
       wins: 1,
       losses: 3,
-      estimatedAverage: 33900,
       horseId: 1
     }),
     User.create({
@@ -474,7 +461,6 @@ const seed = async () => {
       password: 'CiE0CKUGxU',
       wins: 9,
       losses: 7,
-      estimatedAverage: 93332,
       horseId: 1
     }),
     User.create({
@@ -483,7 +469,6 @@ const seed = async () => {
       password: 'OlojN9868',
       wins: 4,
       losses: 3,
-      estimatedAverage: 93088,
       horseId: 1
     })
   ])

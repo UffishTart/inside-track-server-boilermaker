@@ -395,7 +395,7 @@ const seed = async () => {
       password: '123',
       isAdmin: true,
       wins: 4,
-      losses: 3
+      losses: 3,
       horseId: 1
     }),
     User.create({
@@ -403,7 +403,7 @@ const seed = async () => {
       email: 'person2@discovery.com',
       password: 'w5jOkrnlwo',
       wins: 2,
-      losses: 2
+      losses: 2,
       horseId: 1
     }),
     User.create({

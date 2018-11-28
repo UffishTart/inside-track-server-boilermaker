@@ -47,7 +47,8 @@ const User = db.define('user', {
     defaultValue: 0
   },
   estimatedAverage: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    defaultValue: 5000
   }
 })
 module.exports = User

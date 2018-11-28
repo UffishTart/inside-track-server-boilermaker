@@ -338,40 +338,35 @@ const seed = async () => {
       password: '123',
       isAdmin: true,
       wins: 4,
-      losses: 3,
-      estimatedAverage: 2514
+      losses: 3
     }),
     User.create({
       userName: 'kwhicher1',
       email: 'bradke1@discovery.com',
       password: 'w5jOkrnlwo',
       wins: 2,
-      losses: 2,
-      estimatedAverage: 42565
+      losses: 2
     }),
     User.create({
       userName: 'carthurs2',
       email: 'grobinett2@xing.com',
       password: 'SSIuIMXI',
       wins: 1,
-      losses: 3,
-      estimatedAverage: 33900
+      losses: 3
     }),
     User.create({
       userName: 'bbroadnicke3',
       email: 'dboseley3@apple.com',
       password: 'CiE0CKUGxU',
       wins: 9,
-      losses: 7,
-      estimatedAverage: 93332
+      losses: 7
     }),
     User.create({
       userName: 'nblincoe4',
       email: 'ehellwich4@bluehost.com',
       password: 'OlojN9868',
       wins: 4,
-      losses: 3,
-      estimatedAverage: 93088
+      losses: 3
     }),
     User.create({
       userName: 'person1',
@@ -379,40 +374,35 @@ const seed = async () => {
       password: '123',
       isAdmin: true,
       wins: 4,
-      losses: 3,
-      estimatedAverage: 2514
+      losses: 3
     }),
     User.create({
       userName: 'person2',
       email: 'person2@discovery.com',
       password: 'w5jOkrnlwo',
       wins: 2,
-      losses: 2,
-      estimatedAverage: 42565
+      losses: 2
     }),
     User.create({
       userName: 'person3',
       email: 'person3@xing.com',
       password: 'SSIuIMXI',
       wins: 1,
-      losses: 3,
-      estimatedAverage: 33900
+      losses: 3
     }),
     User.create({
       userName: 'person4',
       email: 'person4@apple.com',
       password: 'CiE0CKUGxU',
       wins: 9,
-      losses: 7,
-      estimatedAverage: 93332
+      losses: 7
     }),
     User.create({
       userName: 'person5',
       email: 'person5@bluehost.com',
       password: 'OlojN9868',
       wins: 4,
-      losses: 3,
-      estimatedAverage: 93088
+      losses: 3
     }),
     User.create({
       userName: 'person6',
@@ -420,40 +410,35 @@ const seed = async () => {
       password: '123',
       isAdmin: true,
       wins: 4,
-      losses: 3,
-      estimatedAverage: 2514
+      losses: 3
     }),
     User.create({
       userName: 'person7',
       email: 'person7@discovery.com',
       password: 'w5jOkrnlwo',
       wins: 2,
-      losses: 2,
-      estimatedAverage: 42565
+      losses: 2
     }),
     User.create({
       userName: 'person8',
       email: 'person8@xing.com',
       password: 'SSIuIMXI',
       wins: 1,
-      losses: 3,
-      estimatedAverage: 33900
+      losses: 3
     }),
     User.create({
       userName: 'person9',
       email: 'person9@apple.com',
       password: 'CiE0CKUGxU',
       wins: 9,
-      losses: 7,
-      estimatedAverage: 93332
+      losses: 7
     }),
     User.create({
       userName: 'person10',
       email: 'person10@bluehost.com',
       password: 'OlojN9868',
       wins: 4,
-      losses: 3,
-      estimatedAverage: 93088
+      losses: 3
     })
   ])
   await UserFriend.bulkCreate(userFriendData)

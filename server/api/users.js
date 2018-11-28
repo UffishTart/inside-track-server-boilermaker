@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {User} = require('../db/models')
+const {Horse} = require('../db/models')
 const {isAuthenticated} = require('./apiProtection/isAuthenticated')
 
 module.exports = router
@@ -28,7 +29,10 @@ router.get('/', async (req, res, next) => {
 })
 router.get('/:id', isAuthenticated, async (req, res, next) => {
   try {
-    const user = await User.findById(req.params.id)
+    const user = await User.findOne({
+      where: {id: req.params.id},
+      include: [{model: Horse}]
+    })
     if (!user) {
       res.status(404).send('User is not found!')
     } else {
@@ -47,6 +51,12 @@ router.post('/', async (req, res, next) => {
   }
 })
 router.put('/:id', async (req, res, next) => {
+  console.log(
+    'getting to this route with right req properties',
+    req.body,
+    req.params.id,
+    req.body.horseId
+  )
   try {
     console.log('req.body', req.body)
     const user = await User.findById(req.params.id)

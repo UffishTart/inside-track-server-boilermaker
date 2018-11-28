@@ -140,6 +140,7 @@ const raceData = [
     hasStarted: false
   }
 ]
+//those horses
 const horseData = [
   {
     name: 'Horse',

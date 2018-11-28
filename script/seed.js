@@ -193,7 +193,7 @@ const userRaceData = [
     raceId: 2,
     dailyAverage: 20000,
     place: 3,
-    differenceFromAverage: -1000,
+    differenceFromAverage: -2000,
     percentImprovement: -0.05
   },
   {

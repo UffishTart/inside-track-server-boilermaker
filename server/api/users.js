@@ -48,6 +48,7 @@ router.post('/', async (req, res, next) => {
 })
 router.put('/:id', async (req, res, next) => {
   try {
+    console.log('req.body', req.body)
     const user = await User.findById(req.params.id)
     if (!user) {
       res.status(404).send('User is not found!')

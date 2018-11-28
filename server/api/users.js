@@ -47,6 +47,12 @@ router.post('/', async (req, res, next) => {
   }
 })
 router.put('/:id', async (req, res, next) => {
+  console.log(
+    'getting to this route with right req properties',
+    req.body,
+    req.params.id,
+    req.body.horseId
+  )
   try {
     console.log('req.body', req.body)
     const user = await User.findById(req.params.id)

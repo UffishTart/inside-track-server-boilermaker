@@ -1,6 +1,6 @@
 'use strict'
 
-const {User, Race, UserRace, UserFriend} = require('../server/db/models')
+const {User, Race, UserRace, UserFriend, Horse} = require('../server/db/models')
 const db = require('../server/db')
 
 const fiveDaysAgo = new Date()
@@ -140,9 +140,24 @@ const raceData = [
     hasStarted: false
   }
 ]
+const horseData = [
+  {
+    name: 'Horse 1',
+    imgUrl: 'https://i.imgur.com/0z44ccU.png'
+  },
+  {
+    name: 'Horse 2',
+    imgUrl: 'https://i.imgur.com/GBuY773.png'
+  },
+  {
+    name: 'Horse 3',
+    imgUrl: 'https://i.imgur.com/hytuLWh.png'
+  }
+]
+
 const userRaceData = [
   {
-    isOwner: true,
+    isOwner: false,
     acceptedInvitation: true,
     userId: 1,
     raceId: 1,
@@ -152,7 +167,7 @@ const userRaceData = [
     percentImprovement: 0.5
   },
   {
-    isOwner: false,
+    isOwner: true,
     acceptedInvitation: true,
     userId: 3,
     raceId: 1,
@@ -250,13 +265,13 @@ const userRaceData = [
     raceId: 5
   },
   {
-    isOwner: true,
+    isOwner: false,
     acceptedInvitation: true,
     userId: 1,
     raceId: 6
   },
   {
-    isOwner: false,
+    isOwner: true,
     acceptedInvitation: true,
     userId: 2,
     raceId: 6
@@ -331,6 +346,7 @@ const userRaceData = [
 
 const seed = async () => {
   await db.sync({force: true})
+  await Horse.bulkCreate(horseData)
   await Promise.all([
     User.create({
       userName: 'rui',
@@ -338,35 +354,40 @@ const seed = async () => {
       password: '123',
       isAdmin: true,
       wins: 4,
-      losses: 3
+      losses: 3,
+      horseId: 1
     }),
     User.create({
       userName: 'kwhicher1',
       email: 'bradke1@discovery.com',
       password: 'w5jOkrnlwo',
       wins: 2,
-      losses: 2
+      losses: 2,
+      horseId: 2
     }),
     User.create({
       userName: 'carthurs2',
       email: 'grobinett2@xing.com',
       password: 'SSIuIMXI',
       wins: 1,
-      losses: 3
+      losses: 3,
+      horseId: 3
     }),
     User.create({
       userName: 'bbroadnicke3',
       email: 'dboseley3@apple.com',
       password: 'CiE0CKUGxU',
       wins: 9,
-      losses: 7
+      losses: 7,
+      horseId: 3
     }),
     User.create({
       userName: 'nblincoe4',
       email: 'ehellwich4@bluehost.com',
       password: 'OlojN9868',
       wins: 4,
-      losses: 3
+      losses: 3,
+      horseId: 1
     }),
     User.create({
       userName: 'person1',
@@ -375,6 +396,7 @@ const seed = async () => {
       isAdmin: true,
       wins: 4,
       losses: 3
+      horseId: 1
     }),
     User.create({
       userName: 'person2',
@@ -382,27 +404,31 @@ const seed = async () => {
       password: 'w5jOkrnlwo',
       wins: 2,
       losses: 2
+      horseId: 1
     }),
     User.create({
       userName: 'person3',
       email: 'person3@xing.com',
       password: 'SSIuIMXI',
       wins: 1,
-      losses: 3
+      losses: 3,
+      horseId: 1
     }),
     User.create({
       userName: 'person4',
       email: 'person4@apple.com',
       password: 'CiE0CKUGxU',
       wins: 9,
-      losses: 7
+      losses: 7,
+      horseId: 1
     }),
     User.create({
       userName: 'person5',
       email: 'person5@bluehost.com',
       password: 'OlojN9868',
       wins: 4,
-      losses: 3
+      losses: 3,
+      horseId: 1
     }),
     User.create({
       userName: 'person6',
@@ -410,35 +436,40 @@ const seed = async () => {
       password: '123',
       isAdmin: true,
       wins: 4,
-      losses: 3
+      losses: 3,
+      horseId: 1
     }),
     User.create({
       userName: 'person7',
       email: 'person7@discovery.com',
       password: 'w5jOkrnlwo',
       wins: 2,
-      losses: 2
+      losses: 2,
+      horseId: 1
     }),
     User.create({
       userName: 'person8',
       email: 'person8@xing.com',
       password: 'SSIuIMXI',
       wins: 1,
-      losses: 3
+      losses: 3,
+      horseId: 1
     }),
     User.create({
       userName: 'person9',
       email: 'person9@apple.com',
       password: 'CiE0CKUGxU',
       wins: 9,
-      losses: 7
+      losses: 7,
+      horseId: 1
     }),
     User.create({
       userName: 'person10',
       email: 'person10@bluehost.com',
       password: 'OlojN9868',
       wins: 4,
-      losses: 3
+      losses: 3,
+      horseId: 1
     })
   ])
   await UserFriend.bulkCreate(userFriendData)

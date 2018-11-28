@@ -19,9 +19,25 @@ router.post('/login', async (req, res, next) => {
   }
 })
 
+router.post('/loginWithToken', async (req, res, next) => {
+  console.log('are we getting to this route?')
+  console.log('req.body.token: ', req.body.token)
+  try {
+    const user = await User.findById(req.body.token)
+    req.login(user, err => (err ? next(err) : res.json(user)))
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.post('/signup', async (req, res, next) => {
   try {
-    const user = await User.create(req.body)
+    const user = await User.create({
+      userName: req.body.userName,
+      email: req.body.email,
+      password: req.body.password,
+      horseId: 1
+    })
     req.login(user, err => (err ? next(err) : res.json(user)))
   } catch (err) {
     if (err.name === 'SequelizeUniqueConstraintError') {

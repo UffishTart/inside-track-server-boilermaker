@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const Op = require('sequelize').Op
-const {User, Race, UserRace} = require('../db/models')
+const {User, Race, UserRace, Horse} = require('../db/models')
 // const {isAdmin} = require('./apiProtection/isAdmin')
 const {isAuthenticated} = require('./apiProtection/isAuthenticated')
 module.exports = router
@@ -26,6 +26,7 @@ router.get('/:raceId', isAuthenticated, async (req, res, next) => {
       const userRaceDataEntries = await UserRace.findAll({where: {raceId}})
       const userIds = userRaceDataEntries.map(entry => entry.userId)
       const users = await User.findAll({
+        include: [{model: Horse}],
         where: {id: {[Op.in]: userIds}}
       })
       const userMap = {}
@@ -78,6 +79,7 @@ router.get('/races/:userId', isAuthenticated, async (req, res, next) => {
         entry.dataValues.userInfo = user
         return entry
       })
+      console.log(req.query)
       // GETS the entries where the users have accepted/not accepted the invite
       if (req.query.acceptedInvitation) {
         const filteredEntriesWithData = entriesWithData.filter(entry => {
@@ -88,7 +90,10 @@ router.get('/races/:userId', isAuthenticated, async (req, res, next) => {
         res.json(filteredEntriesWithData)
       } else if (req.query.hasStarted) {
         const filteredEntriesWithData = entriesWithData.filter(entry => {
-          return req.query.hastStarted === String(entry.raceInfo.hasStarted)
+          return (
+            req.query.hasStarted ===
+            String(entry.dataValues.raceInfo.hasStarted)
+          )
         })
         res.json(filteredEntriesWithData)
       } else {
@@ -163,7 +168,7 @@ router.post('/', isAuthenticated, async (req, res, next) => {
       entry.dataValues.userInfo = user
       return entry
     })
-    res.status(201).json(entryWithData)
+    res.status(201).json(entryWithData[0])
   } catch (err) {
     next(err)
   }

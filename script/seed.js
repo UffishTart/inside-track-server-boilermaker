@@ -151,12 +151,12 @@ const horseData = [
     imgUrl: 'https://i.imgur.com/wcmWtSy.gif'
   },
   {
-    name: 'Duck',
-    imgUrl: 'https://i.imgur.com/PrGaLbY.gif'
+    name: 'Cat',
+    imgUrl: 'https://i.imgur.com/M0OP9iJ.gif'
   },
   {
     name: 'Mario',
-    imgUrl: 'https://i.imgur.com/dztneS4.gif'
+    imgUrl: 'https://i.imgur.com/W95SWmt.gif'
   }
 ]
 

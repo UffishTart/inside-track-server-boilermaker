@@ -26,8 +26,8 @@ Set Up
 
 You are ready to get racing.
 
-![](choosing avatar.gif)
-![](adding a race.gif)
+![](choosing-avatar.gif)
+![](adding-a-race.gif)
 
 
 
